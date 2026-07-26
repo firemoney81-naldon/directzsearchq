@@ -1,23 +1,623 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "자동차보험 차량기준가액 조회 및 맞춤형 견적 산정 센터",
+      "description": "보험개발원 및 금융감독원 표준 요율을 기초로 한 자동차보험 차량기준가액 조회 방법과 감가율 분석, 연령대별 차종별 자동차 보험료 비교 및 절약 솔루션을 제시합니다.",
+      "serviceType": "Car Insurance Valuation & Consultation",
+      "areaServed": {
+        "@type": "Country",
+        "name": "KR"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "차량기준가액 및 보험 비교 연구소"
+      },
+      "url": "https://value.reliabledone.com",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "3480"
+      },
+      "priceRange": "₩ (차량 가액에 따른 차등 산정)"
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --secondary-color: #0d9488;
+            --accent-color: #3b82f6;
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.8;
+            word-break: keep-all;
+        }
+
+        header, section, footer {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border-bottom: 4px solid var(--secondary-color);
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 12px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.35rem;
+            color: var(--secondary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        strong {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        ul, ol {
+            padding-left: 24px;
+            margin-bottom: 25px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+            box-shadow: var(--card-shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .highlight-box {
+            background-color: #f0fdf4;
+            border-left: 5px solid var(--secondary-color);
+            padding: 24px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box h4 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto;
+            padding: 18px 24px;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-cta:hover {
+            background-color: #0f766e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(13, 148, 136, 0.4);
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            background-color: #f8fafc;
+            font-size: 1rem;
+            color: var(--text-dark);
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-color);
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .checkbox-label input {
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary-color);
+        }
+
+        .external-links ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .external-links li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .external-links li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .external-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .external-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Grid for Chart Simulation */
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-row {
+            display: flex;
+            align-items: center;
+        }
+
+        .chart-label {
+            width: 150px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .chart-bar-wrapper {
+            flex-grow: 1;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            height: 24px;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+            background-color: var(--secondary-color);
+            text-align: right;
+            padding-right: 10px;
+            color: #ffffff;
+            font-size: 0.8rem;
+            line-height: 24px;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        .chart-bar.accent {
+            background-color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            header, section, footer {
+                margin: 15px;
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            h3 {
+                font-size: 1.15rem;
+            }
+
+            .chart-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .chart-label {
+                width: 100%;
+            }
+
+            .chart-bar-wrapper {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>자동차보험 차량기준가액 총정리 및 연도별 산정 가이드</h1>
+        <p>자동차보험 갱신 시 반드시 파악해야 하는 자동차보험 차량기준가액에 관한 핵심 정보입니다. 보험개발원 분기별 요율 변동 추이와 연식별 감가상각률 계산 프로세스를 구체적으로 투영하여, 불필요한 자차 보험 비용 누수를 방지하고 합리적인 담보를 설계하도록 돕습니다.</p>
+        <a class="btn-cta" href="#calculator-section">내 차량기준가액 및 예상 요금 산정하기</a>
+    </header>
+
+    <section id="introduction">
+        <h2>자동차보험 차량기준가액이란 무엇인가</h2>
+        <p>자동차보험 차량기준가액은 보험사들이 자기차량손해(자차보험) 담보의 보상 한도를 설정하고 보험료를 부과할 때 기준으로 삼는 법적 및 행정적 차량 평가 가치입니다. 이 가액은 국토교통부의 등록 정보와 보험개발원이 매 분기(1월, 4월, 7월, 10월)마다 업데이트하여 공시하는 차량 기준 가액표에 의거하여 결정됩니다. 중고차 시장에서 거래되는 실제 매매 시세와는 차이가 있으며, 경과 년수에 따른 정형화된 감가율표를 기반으로 자동 산출됩니다.</p>
+        
+        <p>보험 개발원에서 정의하는 가액은 신차가 출시된 이후 시간이 흐름에 따라 가치가 떨어지는 비율을 세부 모델, 트림, 엔진 형식에 맞춰 사전에 프로그래밍한 결과물입니다. 따라서 가입자는 매년 자동차 보험을 갱신할 때 자신의 차량 가액이 작년에 비해 얼마나 하락했는지 확인해야 하며, 이에 상응하는 자차 담보 보상액 한도 및 관련 특별약관 할인 혜택을 꼼꼼하게 따져봐야 합니다.</p>
+
+        <div class="highlight-box">
+            <h4>시가표준액과의 핵심적인 차이점</h4>
+            <p>많은 세무 및 금융 소비자가 혼동하는 개념 중 하나가 바로 행정안전부 주관의 시가표준액과 보험개발원 주관의 차량기준가액의 불일치입니다. 시가표준액은 주로 취득세, 재산세 등 국가 세금을 징수하기 위한 과세 표준의 기준선이며 감가상각 적용 방식이 완만합니다. 반면 자동차보험 차량기준가액은 실제 사고 발생 시 전손 처리 보상이나 분손 복구 비용을 정확하게 산정해야 하므로 감가율 적용 폭이 상대적으로 더 가파르고 현실적인 부품 조달 가격 추세를 신속하게 반영합니다.</p>
+        </div>
+    </section>
+
+    <section id="calculation-logic">
+        <h2>차량 가액 결정 요인과 분기별 감가율 구조</h2>
+        <p>차량기준가액은 단순히 연식만으로 결정되지 않습니다. 제조 브랜드의 인지도, 세부 모델의 등급, 출고 당시 장착했던 순정 옵션 품목, 연료 방식 및 배기량 등이 종합적으로 연계되어 공식이 도출됩니다. 아래는 2026년 기준 대한민국 자동차 보험 시장에서 표준적으로 적용되는 가액 감정의 핵심 축입니다.</p>
+        
+        <h3>1. 최초 등록일 및 경과 연수</h3>
+        <p>차량이 공장에서 출고되어 최초로 번호판을 달고 등록한 날짜가 출발점이 됩니다. 매 1년이 경과할 때마다 정해진 잔존율이 적용되며, 국산 세단의 경우 1년 차 잔존율은 평균적으로 약 70%에서 80% 내외로 형성되지만, 수입 스포츠카나 대형 플래그십 모델은 감가 하락 속도가 훨씬 가파르게 전개됩니다.</p>
+
+        <h3>2. 보험개발원 분기별 잔존율 검정</h3>
+        <p>소비자의 실질 주행 행태와 사고 발생 빈도를 추적하는 보험 개발원은 3개월 단위로 잔존율을 정밀 조율합니다. 특정 차종의 중고 매각 수요가 크게 급감하거나 부품 수입 단가가 급격히 변동되는 이벤트가 발생하면, 해당 모델의 가액 등급을 낮춰 보험 가입 시 자차 적용 평가 가치를 가변적으로 떨어뜨립니다.</p>
+
+        <h3>3. 탑재 옵션의 가액 산입 여부</h3>
+        <p>신차 출고 단계에서 장착된 빌트인 내비게이션, 안전 주행 보조 장치 패키지, 고급 휠 세트 등은 신차 가격에 고스란히 포함되어 기준가액을 상승시킵니다. 그러나 출고 이후 가입자가 개별적으로 튜닝하거나 장착한 사제 서스펜션, 사설 오디오 데크 등은 원칙적으로 차량기준가액 공식 산출 범위에서 배제되며 별도의 단품 특약 가입 절차를 밟아야 장치 가격을 부분적으로 보상받을 수 있습니다.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>차량 등급 구분</th>
+                    <th>1년 차 평균 잔존 가치</th>
+                    <th>3년 차 평균 잔존 가치</th>
+                    <th>5년 차 평균 잔존 가치</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>국산 소형/준중형 (아반떼, 캐스퍼 등)</td>
+                    <td>82%</td>
+                    <td>63%</td>
+                    <td>48%</td>
+                    <td>안정적인 수요로 감가 폭이 좁음</td>
+                </tr>
+                <tr>
+                    <td>국산 중형/대형 SUV (쏘렌토, 팰리세이드 등)</td>
+                    <td>85%</td>
+                    <td>68%</td>
+                    <td>52%</td>
+                    <td>패밀리카 선호 현상으로 높은 가치 유지</td>
+                </tr>
+                <tr>
+                    <td>국산 최고급 세단 (제네시스 G90 등)</td>
+                    <td>75%</td>
+                    <td>52%</td>
+                    <td>38%</td>
+                    <td>신차가 대비 중고 감가 하락세가 큼</td>
+                </tr>
+                <tr>
+                    <td>수입 중형 세단 (E클래스, 5시리즈 등)</td>
+                    <td>70%</td>
+                    <td>48%</td>
+                    <td>33%</td>
+                    <td>보증 수리 종료 시점인 3-5년 차에 큰 하락</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="trends-2026">
+        <h2>2026년 최신 보험 정책 변화와 차량 가액 트렌드</h2>
+        <p>2026년도에 진입하면서 국토교통부와 금융감독원은 친환경 전동화 차량 보급의 가속화 및 지능형 ADAS 옵션 탑재율 상승 흐름에 걸맞추어 자동차 보험 약관 및 요율 정책을 고도화하였습니다. 이번 개정은 특히 전기차와 하이브리드 세그먼트의 차량기준가액에 유의미한 변곡점을 형성하였습니다.</p>
+
+        <h3>친환경 전기차 배터리 분리형 가액 산정제 전격 도입</h3>
+        <p>기존 전기 자동차는 고가의 배터리 팩 가격이 전체 차량 출고가의 상당 부분을 점유함에도 불구하고, 일체형 감가 기준이 적용되어 자차 보험 비용 산출 시 불리한 측면이 강했습니다. 2026년도 개편안에 따르면 배터리와 차량 섀시를 분리하여 독자적인 라이프 사이클 감가상각률을 부여할 수 있도록 개선되었습니다. 이는 배터리 잔존 성능 평가와 맞물려 연식에 비해 가액이 무작정 폭락하는 문제를 보완하고 합리적인 비용 청구를 이끌어내고 있습니다.</p>
+
+        <h3>지능형 능동 안전장치 할인 연계 세분화</h3>
+        <p>전방 충돌 방지 보조, 차로 유지 지원 장치 등 첨단 안전 기능이 단순한 편의 장치를 넘어 정식 사고 예방 솔루션으로 인정받았습니다. 보험 가입자가 갱신 시점에 해당 첨단 옵션의 존재 규격을 서류 및 사진으로 확인해 등록하면, 차량기준가액을 유지하면서도 자차 요율 자체에서 추가적인 할인을 이끌어내는 인센티브 매커니즘이 더욱 강화되었습니다.</p>
+    </section>
+
+    <section id="demographics-keywords">
+        <h2>차종별 연령별 자동차보험 가격 및 최적 가입 패턴</h2>
+        <p>대한민국 자동차 보험 구조는 가입 연령대 및 선택 차종의 궁합에 따라 연간 요금이 급격히 뒤흔들립니다. 각 연령 그룹이 실시간으로 검색하고 고민하는 다양한 연관 검색 키워드를 토대로, 맞춤형 가입 전략과 장단점을 여과 없이 설명합니다.</p>
+
+        <div class="chart-container">
+            <div class="chart-row">
+                <span class="chart-label">아반떼 20대 신규 평균</span>
+                <div class="chart-bar-wrapper">
+                    <div class="chart-bar" style="width: 95%;">1,450,000원</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <span class="chart-label">그랜저 30대 다이렉트</span>
+                <div class="chart-bar-wrapper">
+                    <div class="chart-bar accent" style="width: 55%;">780,000원</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <span class="chart-label">쏘렌토 40대 최저가</span>
+                <div class="chart-bar-wrapper">
+                    <div class="chart-bar" style="width: 42%;">580,000원</div>
+                </div>
+            </div>
+            <div class="chart-row">
+                <span class="chart-label">카니발 50대 가족 추천</span>
+                <div class="chart-bar-wrapper">
+                    <div class="chart-bar accent" style="width: 35%;">490,000원</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>초보 및 청년층을 위한 입문 가이드</h3>
+        <p>면허를 취득한 지 얼마 안 된 <strong>아반떼 20대 신규</strong> 가입자와 <strong>경차 20대 평균</strong> 요금 검색 유저는 최초 가입 시 할증 요율이 과도하게 축적되어 있어 연간 납입 금액이 극도로 높게 나옵니다. 이 시기에는 부모님 명의의 차량에 가족 동승 지정을 신청하거나, 기명 피보험자 경력 지정 제도를 적극 도입하는 어플 및 앱 솔루션 탐색이 유용합니다. 포털 사이트의 <strong>네이버</strong>, <strong>구글</strong>, 그리고 실질적인 경험담이 수시로 등록되는 <strong>디시</strong>, <strong>보배드림</strong>, <strong>펨코</strong>, <strong>에펨코리아</strong> 등 커뮤니티에서 자주 올라오는 다이렉트 저렴한곳 추천 좌표 정보를 활용하는 것이 현명합니다. 사은품이나 현금지원 혜택을 전면에 내세우는 온라인 특약 사이트에서 계산기를 구동해 보고 실시간 조회를 시행하는 것이 기본 수순입니다.</p>
+
+        <h3>가정을 꾸리고 자산을 형성하는 직장인 맞춤 추천</h3>
+        <p>사회적 기반을 다진 <strong>그랜저 30대 추천</strong> 세그먼트와 활발하게 여가를 향유하는 <strong>스포티지 30대 할인</strong> 가입층, 가파르게 성장하는 <strong>투싼 20대 최저가</strong> 추적 가입자의 경우 부부 한정 특약이나 7세 이하 자녀 할인 혜택을 버무릴 수 있습니다. 이 시기에는 차량 자체의 안전 사양이 우수하여 차량기준가액 대비 사고율이 낮아 전반적인 요금제 요율이 하향세를 탑니다. <strong>K5 30대 싼곳</strong>을 찾는 요령이나 <strong>GV70 30대 후기</strong> 등을 인스타그램, 페이스북, 유튜브 등 소셜 네트워크 미디어에서 수집하여 비교해 본 결과, 설계사를 대면해 컨설팅을 받는 것보다 다이렉트 사이트에서 스스로 가입하는 편이 장단점 관점에서 사업비 유출이 없어 훨씬 이득인 것으로 평가받고 있습니다.</p>
+
+        <h3>가족형 이동량이 증가하는 장년층의 필수 선택</h3>
+        <p>안정적인 무사고 경력이 누적된 <strong>쏘렌토 40대 비용</strong>, <strong>제네시스 G80 40대 견적</strong> 분석 고객과 다인승 라이프를 지향하는 <strong>카니발 50대 예상</strong> 오너, 그리고 여유로운 일상을 계획하는 <strong>팰리세이드 50대 상담</strong> 이용자의 경우 최적가 수치에 도달하게 됩니다. 이 연령군에서는 요금 총액 자체가 이미 낮기 때문에, 무조건 몇 만 원 저렴한 최저가 브랜드를 집착하기보다, 대물배상 한도를 10억 원 이상으로 증액하거나 긴급출동 견인 거리 서비스를 50km 이상 특별 약관으로 든든하게 메우는 종합 설계 가입이 추천됩니다. <strong>하이브리드 40대 순위</strong> 등을 텔레그램이나 카카오톡 채널을 통해 주기적으로 구독해 두고, 토스나 제미나이, 챗지피티 같은 최신 정보 도구를 이용하여 이번 연도 가장 혜택이 많은 신규 이벤트 및 주유권 상품권 환원 이벤트를 동시에 감안하는 영리한 방식을 택하고 있습니다.</p>
+    </section>
+
+    <section id="checking-methods">
+        <h2>차량기준가액 쉽고 편리하게 조회하는 방법</h2>
+        <p>현재 보유하고 있거나 조만간 매수할 계획이 있는 특정 차량의 정확한 세액 및 자동차보험 차량기준가액을 공인된 통로로 파악하는 3가지 대표적인 방법론을 제시합니다.</p>
+
+        <h3>1. 보험개발원 공식 인터넷 웹사이트 검색</h3>
+        <p>가장 명확하고 공신력 있는 표준 루트입니다. 보험개발원 홈페이지에 접속한 뒤 차량기준가액 메뉴로 이동하여 본인 인증을 완료하면, 국산 및 수입 구분, 차량 제조사, 연식, 모델군, 상세 트림명을 기입하는 직관적인 조건 선택창을 마주하게 됩니다. 이를 활용하면 분기별로 정확하게 정제된 숫자를 별도 비용 지출 없이 무상으로 산출해 볼 수 있습니다.</p>
+
+        <h3>2. 금융 및 핀테크 플랫폼 연동 조회</h3>
+        <p>최근에는 모바일 <strong>토스</strong> 어플리케이션이나 카카오페이, 네이버페이 같은 간편 자산 관리 모바일 어플 내부의 내 차 시세 조회 탭을 활용하는 사용자가 폭증하고 있습니다. 한 번 차량 번호를 등록해 두면 보험 만기 도래 시점에 발맞추어 인공지능이 즉각적으로 현재 분기의 기준 가치를 분석하여 전송해 주기 때문에, 번거로운 본인 인증 과정을 대폭 줄여준다는 장점이 있습니다.</p>
+
+        <h3>3. 개별 다이렉트 보장사 간편 가입 시스템 활용</h3>
+        <p>실제 갱신 계약을 준비하는 중이라면 가입하려는 대형 손해보험사의 다이렉트 견적 시스템에 진입하는 것이 빠릅니다. 계약자 주민번호와 차량 등록 번호를 써넣으면, 해당 보험사가 보유한 공시 데이터베이스와 실시간 매칭되어 자차 보장 가입 시 적용될 최종적인 숫자를 단 몇 초 안에 모니터 상에 구현해 줍니다.</p>
+    </section>
+
+    <section id="qa-forum">
+        <h2>자주 묻는 질문 및 상세 답변</h2>
+        
+        <h3>Q1. 실제 중고차 매매 단지 시세와 보험 가액이 다른 이유는 무엇인가요?</h3>
+        <p>A1. 중고차 상사 등 시장에서 만나는 소매 시세는 차량의 외관 관리 상태, 실제 주행 누적 거리, 용도 이력, 선호하는 내장 컬러 등 개별적인 상품성에 기반하여 딜러의 마진이 추가로 얹어져 책정됩니다. 그러나 자동차보험 차량기준가액은 사고 시 분쟁을 예방하기 위해 보험개발원이라는 공인 기관이 대량의 통계 데이터를 활용하여 획일적인 감가율을 일률적으로 매긴 계량적 수치이기 때문에 현실 매물 가격에 비해 다소 낮게 책정되는 성향이 있습니다.</p>
+
+        <h3>Q2. 사고가 크게 나서 전손 처리를 진행할 때 보상 기준 금액은 언제 날짜의 가액을 따르나요?</h3>
+        <p>A2. 사고 발생일 기준으로 산출되어 있는 당해 분기 차량기준가액이 한도가 됩니다. 예를 들어 1월에 보험 계약 체결 당시에 설정한 가액이 2,000만 원이었더라도, 시간이 한참 흘러 11월에 완전 파손형 사고가 발생했다면 그동안 추가적으로 진행된 경과 감가상각이 누적된 11월 시점의 평가액인 1,800만 원 한도 내에서 최종 지급이 확정됩니다.</p>
+
+        <h3>Q3. 특수 휠 장착이나 전면 래핑 같은 추가 튜닝 부품도 자차로 보상을 원할 때는 어떻게 해야 하나요?</h3>
+        <p>A3. 이 경우에는 원칙적인 자동 조회 시스템 가액만으로는 한도가 모자라게 됩니다. 따라서 청약을 진행할 때 반드시 부속품 추가 특약을 선택하고, 튜닝에 소요된 영수증 및 고가 휠 등의 증빙 사진을 제출하여 가치를 추가 인정받은 뒤 그에 비례해 추가 산정된 자차 요금을 선제적으로 수납하여야 온전한 사후 보전이 가능해집니다.</p>
+
+        <h3>Q4. 연식에 비해 키로수가 매우 짧은데 가액을 올려 잡을 수 있나요?</h3>
+        <p>A4. 아쉽게도 자동차 보장 제도의 기준가액 결정 과정에서 개인 차량의 이례적으로 짧은 누적 주행 거리 조건은 상향 산출 요인으로 개입되지 않습니다. 오직 제조사 모델 규격, 출고 등급, 등록 일자 세 가지만을 변수로 연산하기 때문에 연식에 최적화된 고정 가액에 종속될 수밖에 없습니다.</p>
+    </section>
+
+    <section id="external-resources">
+        <h2>신뢰성 높은 공식 외부 웹 리소스 정보</h2>
+        <p>차량 가액 검증 및 세금 감면 혜택, 정확한 자동차 제도 변화를 깊이 있게 추적하실 수 있도록 정부 부처 및 공인 연구 단체의 다이렉트 연결 통로를 제시합니다.</p>
+        <div class="external-links">
+            <ul>
+                <li><a href="https://directzsearchr.reliabledone.com" target="_blank" rel="noopener">차량 가치 종합 진단 솔루션 (ReliableDone)</a>: 연도별 국내 유통 전 차종의 실시간 시장 감가 흐름과 보험 자산 가치 상각 수준을 상세히 제시하는 가치 검증 통합 채널입니다.</li>
+                <li><a href="https://namu.wiki/w/%EC%9E%90%EB%8F%99%EC%B0%A8%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">나무위키 자동차보험 상세 백과사전</a>: 대인, 대물, 자차, 자상 등 일반 소비자가 반드시 학습해야 할 특약 개념을 입체적이고 방대한 집단지성 텍스트로 보완한 가이드북입니다.</li>
+                <li><a href="https://www.kidi.or.kr" target="_blank" rel="noopener">보험개발원 포털 서비스</a>: 전국 손해보험사의 가액 기준율을 분기별로 취합해 법적인 산출근거를 매겨 고지하는 공신력 있는 핵심 메인 허브입니다.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="calculator-section">
+        <h2>내 차량기준가액 및 맞춤형 보험료 1:1 진단 요청</h2>
+        <p>복잡하게 얽혀 있는 감가 지수와 연령별 요율을 인공지능과 전문 컨설턴트가 결합하여 가장 합리적인 다이렉트 설계 가이드라인을 무료로 분석해 드립니다. 입력을 완료하시면 2026년형 감가율표를 적용한 실시간 예상 포트폴리오를 제공받으실 수 있습니다.</p>
+        
+        <form id="insuranceForm" action="/submit-valuation-inquiry" method="POST">
+            <div class="form-group">
+                <label for="userName">신청인 성함</label>
+                <input type="text" id="userName" name="user_name" placeholder="홍길동" required>
+            </div>
+
+            <div class="form-group">
+                <label for="userPhone">상담 및 결과 회신용 연락처</label>
+                <input type="tel" id="userPhone" name="user_phone" placeholder="010-1234-5678" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="carMaker">차량 제조 브랜드</label>
+                <select id="carMaker" name="car_maker" required>
+                    <option value="">제조사를 선택하세요</option>
+                    <option value="hyundai">현대자동차 (Hyundai)</option>
+                    <option value="kia">기아 (Kia)</option>
+                    <option value="genesis">제네시스 (Genesis)</option>
+                    <option value="kgm">KGM (쌍용)</option>
+                    <option value="renault">르노코리아</option>
+                    <option value="gm">쉐보레 (한국GM)</option>
+                    <option value="import">수입 브랜드 (벤츠, BMW, 아우디 등)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="carModel">상세 차량 모델명</label>
+                <input type="text" id="carModel" name="car_model" placeholder="예: 더 뉴 아반떼 CN7 스마트스트림 1.6 가솔린" required>
+            </div>
+
+            <div class="form-group">
+                <label for="regYear">최초 등록 연도</label>
+                <select id="regYear" name="reg_year" required>
+                    <option value="">연식을 선택하세요</option>
+                    <option value="2026">2026년식 (신차 포함)</option>
+                    <option value="2025">2025년식</option>
+                    <option value="2024">2024년식</option>
+                    <option value="2023">2023년식</option>
+                    <option value="2022">2022년식</option>
+                    <option value="2021">2021년식</option>
+                    <option value="2020">2020년식</option>
+                    <option value="2019">2019년식</option>
+                    <option value="2018">2018년식 이전 모델</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="originalPrice">최초 신차 출고 예상 금액 (만원 단위)</label>
+                <input type="number" id="originalPrice" name="original_price" placeholder="예: 2850" min="100" max="100000" required>
+            </div>
+
+            <div class="form-group">
+                <label for="driverAge">운전자 지정 대상 연령 중 최연소자 생년월일</label>
+                <input type="number" id="driverAge" name="driver_age" placeholder="예: 1996" min="1930" max="2008" required>
+            </div>
+
+            <div class="form-group">
+                <label>해당하는 필수 추가 가입 및 혜택 특약 (중복 선택)</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="special_option" value="mileage"> 마일리지 주행거리 약정
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="special_option" value="adas"> 첨단 안전 장치 장착
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="special_option" value="child"> 자녀 할인 (만 6세 이하)
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="special_option" value="blackbox"> 블랙박스 상시 작동
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="special_option" value="tmap"> 티맵 착한운전 UBI
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="special_option" value="public_transit"> 대중교통 이용 할인
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="extraInquiry">기타 특별한 자차 튜닝 옵션 또는 특이 사항</label>
+                <textarea id="extraInquiry" name="extra_inquiry" rows="4" placeholder="예: 선루프 순정 장착(출고가 80만원), 혹은 단독 자차 담보 보상액 2500만원 이상 수준 고정을 희망함"></textarea>
+            </div>
+
+            <button type="submit" class="btn-cta">실시간 차량기준가액 검증 및 견적 분석 신청</button>
+        </form>
+    </section>
+
+  
